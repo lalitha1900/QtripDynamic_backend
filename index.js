@@ -14,7 +14,7 @@ var timezone = require("dayjs/plugin/timezone");
 dayjs.extend(utc);
 dayjs.extend(timezone);
 dayjs.tz.setDefault("Asia/Kolkata");
-
+console.log("hello "+db);
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

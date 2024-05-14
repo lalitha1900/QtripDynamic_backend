@@ -32,6 +32,10 @@ The response is an [array] of cities with each having the following structure :
 }
 Data is sourced from "cities" array in db.json file
 */
+app.get("/", (req, res) => {
+  
+  return res.send("check");
+});
 app.get("/cities", (req, res) => {
   const data = db.get("cities").value();
   return res.json(data);

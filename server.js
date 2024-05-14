@@ -240,8 +240,8 @@ app.post("/adventures/new", (req, res) => {
   res.json({ success: true, ...adventuresData });
 });
 
-app.listen(process.env.PORT || PORT, () => {
-  console.log(`Backend is running on port ${process.env.PORT || PORT}`);
+app.listen(PORT, () => {
+  console.log(`Backend is running on port ${ PORT}`);
 });
 
 /*

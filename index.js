@@ -34,7 +34,7 @@ Data is sourced from "cities" array in db.json file
 */
 app.get("/", (req, res) => {
   
-  return res.send("check1");
+  return res.send(db);
 });
 app.get("/cities", (req, res) => {
   const data = db.get("cities").value();

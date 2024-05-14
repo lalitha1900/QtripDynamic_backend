@@ -37,7 +37,7 @@ app.get("/", (req, res) => {
   return res.send(db);
 });
 app.get("/cities", (req, res) => {
-  const data =random_data.cities.data.cities; //db.get("cities").value();
+  const data =random_data.data.cities; //db.get("cities").value();
   return res.json(data);
 });
 
@@ -56,7 +56,8 @@ The response is an [array] of adventures with each having the following structur
 Data is sourced from "adventures" array in db.json file
 */
 app.get("/adventures", (req, res) => {
-  const data = random_data.cities.data.adventures;//db.get("adventures").value();
+    console.log(random_data);
+  const data = random_data.data.adventures;//db.get("adventures").value();
   let response = (data.find((item) => item.id == req.query.city) || [])
     .adventures;
   if (response) return res.json(response);

@@ -37,6 +37,8 @@ app.get("/", (req, res) => {
   return res.send(db);
 });
 app.get("/cities", (req, res) => {
+    res.setHeader("Access-Control-Allow-Origin","*");
+    res.setHeader("Access-Control-Allow-Methods","GET,POST,PUT,DELETE,PATCH,OPTIONS");
   const data =random_data.data.cities; //db.get("cities").value();
   return res.json(data);
 });

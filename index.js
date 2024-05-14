@@ -6,7 +6,7 @@ const FileSync = require("lowdb/adapters/FileSync");
 const bodyParser = require("body-parser");
 const { nanoid, customAlphabet } = require("nanoid");
 var dayjs = require("dayjs");
-const db = lowDb(new FileSync(process.cwd()+"/db.json"));
+const db = lowDb(new FileSync("tmp/db.json"));
 const app = express();
 const random_data = require("./random_data");
 var utc = require("dayjs/plugin/utc"); // dependent on utc plugin
@@ -37,7 +37,7 @@ app.get("/", (req, res) => {
   return res.send(db);
 });
 app.get("/cities", (req, res) => {
-  const data = db.get("cities").value();
+  const data =random_data.cities.data.cities; //db.get("cities").value();
   return res.json(data);
 });
 
@@ -56,7 +56,7 @@ The response is an [array] of adventures with each having the following structur
 Data is sourced from "adventures" array in db.json file
 */
 app.get("/adventures", (req, res) => {
-  const data = db.get("adventures").value();
+  const data = random_data.cities.data.adventures;//db.get("adventures").value();
   let response = (data.find((item) => item.id == req.query.city) || [])
     .adventures;
   if (response) return res.json(response);
@@ -86,7 +86,7 @@ The response is an [array] of adventures with each having the following structur
 Data is sourced from "adventures" array in db.json file
 */
 app.get("/adventures/detail", (req, res) => {
-  const data = db.get("detail").value();
+  const data = random_data.cities.data.detail;//db.get("detail").value();
   let response = data.find((item) => item.id == req.query.adventure);
   if (response) return res.json(response);
   else
@@ -108,7 +108,7 @@ app.post("/reservations/new", (req, res) => {
     });
   }
 
-  const instance = db.get("detail").value();
+  const instance = random_data.cities.data.detail;//db.get("detail").value();
   const nanoid = customAlphabet("1234567890abcdef", 16);
   let reqDate = dayjs(req.body.date);
   let currentDate = dayjs(new Date());
@@ -163,7 +163,7 @@ The response is an [array] of reservations with each having the following struct
 Data is sourced from "reservations" array in db.json file
 */
 app.get("/reservations", (req, res) => {
-  const data = db.get("reservations").value();
+  const data = random_data.cities.data.reservation;//db.get("reservations").value();
   if (data) return res.json(data);
 });
 
@@ -222,7 +222,7 @@ app.post("/adventures/new", (req, res) => {
     category: categories[Math.floor(Math.random() * categories.length)],
   };
 
-  let detail = db.get("detail");
+  let detail = random_data.cities.data.detail;//db.get("detail");
   detail.push(adventureDetail).write();
 
   let adventures = db

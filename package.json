@@ -1,7 +1,6 @@
 {
   "name": "json-server",
   "version": "1.0.0",
-  "description": "",
   "scripts": {
     "start": "node server.js"
   },
@@ -18,5 +17,7 @@
     "@testing-library/dom": "^8.13.0",
     "typescript": "^3.2.1",
     "@babel/core": "^7.17.10"
-  }
+  },
+  "main": "random_data.js",
+  "description": ""
 }

@@ -19,7 +19,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const PORT = 8082;
+const PORT = 8080;
 
 /*
 [GET API] used in module 1 to fetch data for all cities
@@ -34,7 +34,7 @@ Data is sourced from "cities" array in db.json file
 */
 app.get("/", (req, res) => {
   
-  return res.send("check");
+  return res.send("check1");
 });
 app.get("/cities", (req, res) => {
   const data = db.get("cities").value();
